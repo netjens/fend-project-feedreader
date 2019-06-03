@@ -31,18 +31,21 @@ $(
        * in the allFeeds object and ensures it has a URL defined
        * and that the URL is not empty.
        */
-
       it("url is defined", function() {
         for (feed of allFeeds) {
-          console.log("feed.url" + feed.url);
           expect(feed.url).toBeDefined();
         }
       });
 
-      /* TODO: Write a test that loops through each feed
+      /* Write a test that loops through each feed
        * in the allFeeds object and ensures it has a name defined
        * and that the name is not empty.
        */
+    });
+    it("name is defined", function() {
+      for (feed of allFeeds) {
+        expect(feed.name).toBeDefined();
+      }
     });
 
     /* TODO: Write a new test suite named "The menu" */
