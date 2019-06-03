@@ -52,13 +52,19 @@ $(
 
     /* test suite named "The menu" */
     describe("The menu", function() {
-      /* TODO: Write a test that ensures the menu element is
+      /* test that ensures the menu element is
        * hidden by default. You'll have to analyze the HTML and
        * the CSS to determine how we're performing the
        * hiding/showing of the menu element.
        */
       it("menu is hidden by default", function() {
         expect(document.querySelector("body.menu-hidden")).not.toBeNull();
+      });
+
+      let menuIcon = document.querySelector(".menu-icon-link");
+      menuIcon.click();
+      it("menu is visible after menu-icon clicked", function() {
+        expect(document.querySelector("body.menu-hidden")).toBeNull();
       });
     });
 
