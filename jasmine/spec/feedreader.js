@@ -41,20 +41,26 @@ $(
        * in the allFeeds object and ensures it has a name defined
        * and that the name is not empty.
        */
-    });
-    it("name is defined", function() {
-      for (feed of allFeeds) {
-        expect(feed.name).toBeDefined();
-      }
+
+      it("name is defined", function() {
+        for (feed of allFeeds) {
+          expect(feed.name).toBeDefined();
+          expect(feed.name.trim().length).toBeGreaterThan(0);
+        }
+      });
     });
 
-    /* TODO: Write a new test suite named "The menu" */
-
-    /* TODO: Write a test that ensures the menu element is
-     * hidden by default. You'll have to analyze the HTML and
-     * the CSS to determine how we're performing the
-     * hiding/showing of the menu element.
-     */
+    /* test suite named "The menu" */
+    describe("The menu", function() {
+      /* TODO: Write a test that ensures the menu element is
+       * hidden by default. You'll have to analyze the HTML and
+       * the CSS to determine how we're performing the
+       * hiding/showing of the menu element.
+       */
+      it("menu is hidden by default", function() {
+        expect(document.querySelector("body.menu-hidden")).not.toBeNull();
+      });
+    });
 
     /* TODO: Write a test that ensures the menu changes
      * visibility when the menu icon is clicked. This test
