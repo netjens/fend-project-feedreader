@@ -58,21 +58,24 @@ $(
        * hiding/showing of the menu element.
        */
       it("menu is hidden by default", function() {
-        expect(document.querySelector("body.menu-hidden")).not.toBeNull();
+        expect(document.querySelector("body")).toHaveClass("menu-hidden");
       });
 
-      let menuIcon = document.querySelector(".menu-icon-link");
-      menuIcon.click();
-      it("menu is visible after menu-icon clicked", function() {
-        expect(document.querySelector("body.menu-hidden")).toBeNull();
+      /* test that ensures the menu changes
+       * visibility when the menu icon is clicked. This test
+       * should have two expectations: does the menu display when
+       * clicked and does it hide when clicked again.
+       */
+
+      it("menu is visible after menu-icon clicked, and invisible after clicked again", function() {
+        let menuIcon = document.querySelector(".menu-icon-link");
+        menuIcon.click();
+        expect(document.querySelector("body")).not.toHaveClass("menu-hidden");
+
+        menuIcon.click();
+        expect(document.querySelector("body")).toHaveClass("menu-hidden");
       });
     });
-
-    /* TODO: Write a test that ensures the menu changes
-     * visibility when the menu icon is clicked. This test
-     * should have two expectations: does the menu display when
-     * clicked and does it hide when clicked again.
-     */
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
