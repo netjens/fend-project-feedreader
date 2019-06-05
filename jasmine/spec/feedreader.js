@@ -96,11 +96,21 @@ $(
       });
     });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
-
-    /* TODO: Write a test that ensures when a new feed is loaded
-     * by the loadFeed function that the content actually changes.
-     * Remember, loadFeed() is asynchronous.
-     */
+    /* test suite named "New Feed Selection" */
+    describe("New Feed Selection", function() {
+      /* Write a test that ensures when a new feed is loaded
+       * by the loadFeed function that the content actually changes.
+       * Remember, loadFeed() is asynchronous.
+       */
+      let headerTitle = document.querySelector("h1.header-title").textContent;
+      beforeEach(function(done) {
+        loadFeed(1, done); //load another feed
+      });
+      it("the feed has changed", function() {
+        expect(document.querySelector("h1.header-title").textContent).not.toBe(
+          headerTitle
+        );
+      });
+    });
   })()
 );
