@@ -24,7 +24,7 @@ $(
        */
       it("are defined", function() {
         expect(allFeeds).toBeDefined();
-        expect(allFeeds.length).not.toBe(0);
+        expect(allFeeds.length).toBeGreaterThan(0);
       });
 
       /* Write a test that loops through each feed
@@ -34,6 +34,7 @@ $(
       it("url is defined", function() {
         for (feed of allFeeds) {
           expect(feed.url).toBeDefined();
+          expect(feed.url.length).toBeGreaterThan(0);
         }
       });
 
@@ -91,7 +92,7 @@ $(
 
       it("at least one feed-element in the feed-container is available", function() {
         expect(
-          document.querySelector("div.feed").childNodes.length
+          document.querySelectorAll("article.entry").length
         ).toBeGreaterThan(0);
       });
     });
