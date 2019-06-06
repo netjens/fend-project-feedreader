@@ -103,14 +103,22 @@ $(
        * by the loadFeed function that the content actually changes.
        * Remember, loadFeed() is asynchronous.
        */
-      let headerTitle = document.querySelector("h1.header-title").textContent;
+      let feedAfterFirstLoad;
+      let feedAfterSecondLoad;
+
       beforeEach(function(done) {
-        loadFeed(1, done); //load another feed
+        loadFeed(0, function() {
+          feedAfterFirstLoad = document.querySelector("h1.header-title")
+            .textContent;
+          loadFeed(1, function() {
+            feedAfterSecondLoad = document.querySelector("h1.header-title")
+              .textContent;
+            done();
+          });
+        });
       });
       it("the feed has changed", function() {
-        expect(document.querySelector("h1.header-title").textContent).not.toBe(
-          headerTitle
-        );
+        expect(feedAfterFirstLoad).not.toBe(feedAfterSecondLoad);
       });
     });
   })()
