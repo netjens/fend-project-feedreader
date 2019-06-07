@@ -23,8 +23,7 @@ $(
        * page?
        */
       it("are defined", function() {
-        expect(allFeeds).toBeDefined();
-        expect(allFeeds.length).toBeGreaterThan(0);
+        expect(allFeeds).toBeTruthy();
       });
 
       /* Write a test that loops through each feed
@@ -33,8 +32,7 @@ $(
        */
       it("url is defined", function() {
         for (feed of allFeeds) {
-          expect(feed.url).toBeDefined();
-          expect(feed.url.length).toBeGreaterThan(0);
+          expect(feed.url).toBeTruthy();
         }
       });
 
@@ -45,8 +43,7 @@ $(
 
       it("name is defined", function() {
         for (feed of allFeeds) {
-          expect(feed.name).toBeDefined();
-          expect(feed.name.trim().length).toBeGreaterThan(0);
+          expect(feed.name).toBeTruthy();
         }
       });
     });
@@ -92,7 +89,7 @@ $(
 
       it("at least one feed-element in the feed-container is available", function() {
         expect(
-          document.querySelectorAll("article.entry").length
+          document.querySelectorAll(".feed .entry").length
         ).toBeGreaterThan(0);
       });
     });
